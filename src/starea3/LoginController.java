@@ -15,9 +15,9 @@ import java.sql.SQLException;
  */
 public class LoginController {
 
-    public Login view;
+    public LoginForm view;
     
-    public LoginController(Login view) {
+    public LoginController(LoginForm view) {
         this.view = view;
     }
        
@@ -25,12 +25,6 @@ public class LoginController {
         DBConnector.initiateConnection();
         ResultSet a = DBConnector.executeQuery("SELECT * FROM users WHERE email='"+email+"'");
         if (a.next()) {
-            if ( !a.getString(1).equals(email) ){
-                this.view.getjLabel3().setVisible(true);
-                this.view.getjLabel4().setVisible(false);
-                this.view.getjLabel3().setText("There is no user with that email");
-                return false;
-            }
             if ( !a.getString(3).equals(password) ){
                 this.view.getjLabel3().setVisible(false);
                 this.view.getjLabel4().setVisible(true);
@@ -38,8 +32,12 @@ public class LoginController {
                 return false;
             }
             return true;
+        }else{
+            this.view.getjLabel3().setVisible(true);
+            this.view.getjLabel4().setVisible(false);
+            this.view.getjLabel3().setText("There is no user with that email");
+            return false;
         }
-        return false;
     }
     
     public void displayMainMenu(){
