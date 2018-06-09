@@ -16,7 +16,9 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Encrypt.foo(args);
         new LoginForm(null,true).show();
+        
     }
     
 }
