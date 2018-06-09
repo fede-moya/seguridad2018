@@ -23,7 +23,7 @@ public class LoginController {
        
     public boolean logIn(String email, String password) throws SQLException {
         DBConnector.initiateConnection();
-        ResultSet a = DBConnector.executeQuery("SELECT * FROM users");
+        ResultSet a = DBConnector.executeQuery("SELECT * FROM users WHERE email='"+email+"'");
         if (a.next()) {
             if ( !a.getString(1).equals(email) ){
                 this.view.getjLabel3().setVisible(true);
