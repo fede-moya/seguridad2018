@@ -5,9 +5,10 @@
  */
 
 package starea3;
-import conexion.Conector;
-import javax.swing.*;  
+
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,16 +20,14 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        // Creating develop branch
-//        JFrame f=new JFrame();//creating instance of JFrame  
-//        JButton b=new JButton("click");//creating instance of JButton  
-//        b.setBounds(130,100,100, 40);//x axis, y axis, width, height  
-//        f.add(b);//adding button in JFrame  
-//        f.setSize(400,500);//400 width and 500 height  
-//        f.setLayout(null);//using no layout managers  
-//        f.setVisible(true);//making the frame visible  
-      Conector.abrirConexion();
+        DBConnector.initiateConnection();
+        ResultSet a = DBConnector.executeQuery("SELECT * FROM users");
+        try {
+            if (a.next()) {
+                System.out.println(a.getString(1));
+            }   } catch (SQLException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     
     
