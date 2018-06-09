@@ -38,9 +38,16 @@ public class SignUpFormController {
         this.view.getPasswordErrorLabel().setText("");
         this.view.getPasswordConfirmationErrorLabel().setText("");
     }
+    
+    public void evaluatePasswordQuality(){
+        this.view.getPasswordField().getText();
+        this.view.getPasswordErrorLabel().setText("Can't be blank");
+    }
+    
     public boolean validate(){
         boolean valid = true;
         clearErrorLables();
+        evaluatePasswordQuality();
         
         
         if ("".equals(this.view.getEmailField().getText())){
