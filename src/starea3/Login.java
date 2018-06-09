@@ -129,8 +129,7 @@ public class Login extends javax.swing.JDialog {
         LoginController controller = new LoginController(this);
         try {
             if(controller.logIn(this.jTextField1.getText(), this.jPasswordField1.getText())){
-                this.dispose();
-                new MainMenu().show();
+                controller.displayMainMenu();
             }
         } catch (SQLException ex) {
             System.out.println("Sorry, something went wrong trying to access the DB");

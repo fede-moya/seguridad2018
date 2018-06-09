@@ -42,4 +42,11 @@ public class LoginController {
         return false;
     }
     
+    public void displayMainMenu(){
+        view.dispose();
+                MainMenu mm = new MainMenu();
+                mm.setBounds(400,100,500,500);
+                mm.setLocationRelativeTo(view);
+                mm.show();
+    }
 }
