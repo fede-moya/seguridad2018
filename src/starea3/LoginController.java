@@ -23,9 +23,9 @@ public class LoginController {
        
     public boolean logIn(String email, String password) throws SQLException {
         DBConnector.initiateConnection();
-        ResultSet a = DBConnector.executeQuery("SELECT * FROM users WHERE email='"+email+"'");
-        if (a.next()) {
-            if ( !a.getString(3).equals(password) ){
+        ResultSet resultQuery = DBConnector.executeQuery("SELECT * FROM users WHERE email='"+email+"'");
+        if (resultQuery.next()) {
+            if ( !resultQuery.getString(3).equals(Encrypt.digestSHA1(password)) ){
                 this.view.getjLabel3().setVisible(false);
                 this.view.getjLabel4().setVisible(true);
                 this.view.getjLabel4().setText("Invalid password");
@@ -42,9 +42,19 @@ public class LoginController {
     
     public void displayMainMenu(){
         view.dispose();
-                MainMenu mm = new MainMenu();
-                mm.setBounds(400,100,500,500);
-                mm.setLocationRelativeTo(view);
-                mm.show();
+        MainMenu mm = new MainMenu();
+        mm.setBounds(400,100,500,500);
+        mm.setLocationRelativeTo(view);
+        mm.show();
+    }
+    
+    public void displaySignUpForm(){
+        view.setVisible(false);
+        SignUpForm signUp = new SignUpForm();
+        signUp.setLocationRelativeTo(view);
+        signUp.toFront();
+        signUp.requestFocus();
+        signUp.setVisible(true);
+        signUp.show();
     }
 }

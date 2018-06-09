@@ -5,8 +5,7 @@
  */
 package starea3;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -50,7 +49,6 @@ public class DBConnector {
 
     public static void initiateConnection() {
         try {
-            // Register driver
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/seguridad", "postgres","postgres");
             sentence = connection.createStatement();
@@ -61,12 +59,12 @@ public class DBConnector {
         }
     }
     
-    public static  ResultSet executeQuery(String query){
-        try {
-            return sentence.executeQuery(query);
-        } catch (SQLException ex) {
-            return null;
-        }
+    public static  ResultSet executeQuery(String query) throws SQLException{
+        return sentence.executeQuery(query);
+    }
+    
+    public static  int executeUpdate(String query) throws SQLException{
+        return sentence.executeUpdate(query);
     }
 
 }

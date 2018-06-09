@@ -16,6 +16,7 @@ import javax.swing.JTextField;
  * @author federico
  */
 public class LoginForm extends javax.swing.JDialog {
+    public final LoginController controller;
     
     /**
      * Creates new form Login
@@ -28,6 +29,8 @@ public class LoginForm extends javax.swing.JDialog {
         jLabel3.setVisible(false);
         jLabel4.setVisible(false);
         setLocationRelativeTo(this);
+        setAlwaysOnTop(false);
+        controller = new LoginController(this);
     }
 
     /**
@@ -126,7 +129,6 @@ public class LoginForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        LoginController controller = new LoginController(this);
         try {
             if(controller.logIn(this.jTextField1.getText(), this.jPasswordField1.getText())){
                 controller.displayMainMenu();
@@ -138,7 +140,7 @@ public class LoginForm extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        controller.displaySignUpForm();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
