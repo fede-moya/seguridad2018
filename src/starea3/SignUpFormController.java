@@ -40,8 +40,9 @@ public class SignUpFormController {
     }
     
     public void evaluatePasswordQuality(){
-        this.view.getPasswordField().getText();
-        this.view.getPasswordErrorLabel().setText("Can't be blank");
+        String digestedPassword = Encrypt.digestSHA1(this.view.getPasswordField().getText());
+        String passwordQualityMessage = PwnedValidator.evaluatePassword(digestedPassword);
+        this.view.getPasswordErrorLabel().setText(passwordQualityMessage);
     }
     
     public boolean validate(){

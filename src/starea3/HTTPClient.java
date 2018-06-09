@@ -16,7 +16,7 @@ import java.net.URL;
  */
 public class HTTPClient {
     
-    private static String BASIC_URL = "https://api.pwnedpasswords.com/range/range";
+    private static String BASIC_URL = "https://api.pwnedpasswords.com/range/";
     private static String USER_AGENT = "Mozilla/5.0";
     
     public static int executeGet(String prefix, String suffix) {
