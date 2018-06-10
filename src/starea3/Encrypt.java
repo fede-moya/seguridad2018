@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.InvalidKeyException;
@@ -51,60 +52,35 @@ public class Encrypt {
         return getHash(message.getBytes(StandardCharsets.UTF_8));
     }
     
-    public static void fileProcessor(int cipherMode,String key,File inputFile,File outputFile){
-	 try {
-	       Key secretKey = new SecretKeySpec(key.getBytes(), "AES");
-	       Cipher cipher = Cipher.getInstance("AES");
-	       cipher.init(cipherMode, secretKey);
+    public static void fileProcessor(int cipherMode,String key,File inputFile,File outputFile) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, FileNotFoundException, IOException, IllegalBlockSizeException, BadPaddingException{
+        Key secretKey = new SecretKeySpec(key.getBytes(), "AES");
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(cipherMode, secretKey);
 
-	       FileInputStream inputStream = new FileInputStream(inputFile);
-	       byte[] inputBytes = new byte[(int) inputFile.length()];
-	       inputStream.read(inputBytes);
+        FileInputStream inputStream = new FileInputStream(inputFile);
+        byte[] inputBytes = new byte[(int) inputFile.length()];
+        inputStream.read(inputBytes);
 
-	       byte[] outputBytes = cipher.doFinal(inputBytes);
+        byte[] outputBytes = cipher.doFinal(inputBytes);
 
-	       FileOutputStream outputStream = new FileOutputStream(outputFile);
-	       outputStream.write(outputBytes);
+        FileOutputStream outputStream = new FileOutputStream(outputFile);
+        outputStream.write(outputBytes);
 
-	       inputStream.close();
-	       outputStream.close();
+        inputStream.close();
+        outputStream.close();
 
-	    } catch (NoSuchPaddingException | NoSuchAlgorithmException 
-                     | InvalidKeyException | BadPaddingException
-	             | IllegalBlockSizeException | IOException e) {
-		e.printStackTrace();
-            }
      }
     
-    public static void encryptFile(String key, String path){
+    public static void encryptFile(String key, String path) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IOException, FileNotFoundException, IllegalBlockSizeException, BadPaddingException{
         File inputFile = new File(path);
-        File encryptedFile = new File(inputFile.getParent()+"/foo.txt");
+        File encryptedFile = new File(inputFile.getParent() + "/encrypted_" + inputFile.getName());
         Encrypt.fileProcessor(Cipher.ENCRYPT_MODE,key,inputFile,encryptedFile);
-        System.out.println("Sucessfully encrypted !!! ");
     }
     
-    public static void decryptFile(String key, String path){
+    public static void decryptFile(String key, String path) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IOException, FileNotFoundException, IllegalBlockSizeException, BadPaddingException{
         File inputFile = new File(path);
-        File decryptedFile = new File(inputFile.getParent()+"/foo.txt");
+        File decryptedFile = new File(inputFile.getParent() + "/decrypted_" + inputFile.getName());
         Encrypt.fileProcessor(Cipher.DECRYPT_MODE,key,inputFile,decryptedFile);
-        System.out.println("Sucessfully decrypted !!! ");
     }
-    
-      public static void foo(String[] args) {
-	String key = "This is a secret";
-        
-	File inputFile = new File("/Users/federico/Desktop/text.txt");
-	File encryptedFile = new File("/Users/federico/Desktop/text.encrypted");
-	File decryptedFile = new File("/Users/federico/Desktop/decrypted-text.txt");
-		
-	try {
-	     Encrypt.fileProcessor(Cipher.ENCRYPT_MODE,key,inputFile,encryptedFile);
-	     Encrypt.fileProcessor(Cipher.DECRYPT_MODE,key,encryptedFile,decryptedFile);
-	     System.out.println("Sucess");
-	 } catch (Exception ex) {
-	     System.out.println(ex.getMessage());
-             ex.printStackTrace();
-	 }
-     }
     
 }

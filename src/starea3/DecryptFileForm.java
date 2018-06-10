@@ -40,6 +40,8 @@ public class DecryptFileForm extends javax.swing.JFrame {
         keyField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         decryptButton = new javax.swing.JToggleButton();
+        keyErrorLabel = new javax.swing.JLabel();
+        generalErrorLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Decrypt File");
@@ -60,24 +62,35 @@ public class DecryptFileForm extends javax.swing.JFrame {
             }
         });
 
+        keyErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+
+        generalErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(keyField)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(attachFileField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(attachFileButton)))
-                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(decryptButton)
                 .addGap(155, 155, 155))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(keyErrorLabel)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(keyField)
+                                .addComponent(jLabel1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(attachFileField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(attachFileButton)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(generalErrorLabel)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,9 +103,13 @@ public class DecryptFileForm extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(keyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(keyErrorLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(decryptButton)
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(generalErrorLabel)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -185,11 +202,29 @@ public class DecryptFileForm extends javax.swing.JFrame {
         this.keyField = keyField;
     }
 
+    public JLabel getGeneralErrorLabel() {
+        return generalErrorLabel;
+    }
+
+    public void setGeneralErrorLabel(JLabel generalErrorLabel) {
+        this.generalErrorLabel = generalErrorLabel;
+    }
+
+    public JLabel getKeyFieldErrorLabel() {
+        return keyErrorLabel;
+    }
+
+    public void setKeyFieldErrorLabel(JLabel keyErrorLabel) {
+        this.keyErrorLabel = keyErrorLabel;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton attachFileButton;
     private javax.swing.JTextField attachFileField;
     private javax.swing.JToggleButton decryptButton;
+    private javax.swing.JLabel generalErrorLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel keyErrorLabel;
     private javax.swing.JTextField keyField;
     // End of variables declaration//GEN-END:variables
 }

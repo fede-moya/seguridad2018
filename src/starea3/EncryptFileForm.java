@@ -40,6 +40,8 @@ public class EncryptFileForm extends javax.swing.JFrame {
         keyField = new javax.swing.JTextField();
         encryptButton = new javax.swing.JButton();
         attachFileField = new javax.swing.JTextField();
+        keyFieldErrorLabel = new javax.swing.JLabel();
+        generalErrorLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Encrypt File");
@@ -60,6 +62,10 @@ public class EncryptFileForm extends javax.swing.JFrame {
             }
         });
 
+        keyFieldErrorLabel.setForeground(new java.awt.Color(255, 51, 51));
+
+        generalErrorLabel.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,19 +74,27 @@ public class EncryptFileForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(encryptButton)
                 .addGap(167, 167, 167))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(keyField, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(generalErrorLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(keyFieldErrorLabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(keyField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(attachFileField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(attachFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(80, 80, 80))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(attachFileField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(attachFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(80, 80, 80))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,9 +107,13 @@ public class EncryptFileForm extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(keyField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(keyFieldErrorLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(encryptButton)
-                .addGap(86, 86, 86))
+                .addGap(18, 18, 18)
+                .addComponent(generalErrorLabel)
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -188,11 +206,29 @@ public class EncryptFileForm extends javax.swing.JFrame {
         this.keyField = keyField;
     }
 
+    public JLabel getKeyFieldErrorLabel() {
+        return keyFieldErrorLabel;
+    }
+
+    public void setKeyFieldErrorLabel(JLabel keyFieldErrorLabel) {
+        this.keyFieldErrorLabel = keyFieldErrorLabel;
+    }
+
+    public JLabel getGeneralErrorLabel() {
+        return generalErrorLabel;
+    }
+
+    public void setGeneralErrorLabel(JLabel generalErrorLabel) {
+        this.generalErrorLabel = generalErrorLabel;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton attachFileButton;
     private javax.swing.JTextField attachFileField;
     private javax.swing.JButton encryptButton;
+    private javax.swing.JLabel generalErrorLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField keyField;
+    private javax.swing.JLabel keyFieldErrorLabel;
     // End of variables declaration//GEN-END:variables
 }
