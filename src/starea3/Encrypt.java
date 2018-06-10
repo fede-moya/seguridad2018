@@ -76,6 +76,20 @@ public class Encrypt {
             }
      }
     
+    public static void encryptFile(String key, String path){
+        File inputFile = new File(path);
+        File encryptedFile = new File(inputFile.getParent()+"/foo.txt");
+        Encrypt.fileProcessor(Cipher.ENCRYPT_MODE,key,inputFile,encryptedFile);
+        System.out.println("Sucessfully encrypted !!! ");
+    }
+    
+    public static void decryptFile(String key, String path){
+        File inputFile = new File(path);
+        File decryptedFile = new File(inputFile.getParent()+"/foo.txt");
+        Encrypt.fileProcessor(Cipher.DECRYPT_MODE,key,inputFile,decryptedFile);
+        System.out.println("Sucessfully decrypted !!! ");
+    }
+    
       public static void foo(String[] args) {
 	String key = "This is a secret";
         

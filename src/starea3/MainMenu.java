@@ -29,6 +29,8 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        encryptFileButton = new javax.swing.JButton();
+        decryptButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,27 +44,52 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        encryptFileButton.setText("Encrypt File");
+        encryptFileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                encryptFileButtonActionPerformed(evt);
+            }
+        });
+
+        decryptButton.setText("Decrypt File");
+        decryptButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                decryptButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(161, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(185, 185, 185))
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(encryptFileButton)
+                        .addGap(34, 34, 34)
+                        .addComponent(decryptButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(encryptFileButton)
+                    .addComponent(decryptButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
 
         pack();
@@ -72,6 +99,25 @@ public class MainMenu extends javax.swing.JFrame {
             // TODO add your handling code here:
             System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void encryptFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encryptFileButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        EncryptFileForm mm = new EncryptFileForm();
+//        mm.setBounds(400,100,500,500);
+        mm.setLocationRelativeTo(this);
+        mm.show();
+        
+    }//GEN-LAST:event_encryptFileButtonActionPerformed
+
+    private void decryptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decryptButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        DecryptFileForm mm = new DecryptFileForm();
+//        mm.setBounds(400,100,500,500);
+        mm.setLocationRelativeTo(this);
+        mm.show();
+    }//GEN-LAST:event_decryptButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,6 +155,8 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton decryptButton;
+    private javax.swing.JButton encryptFileButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
