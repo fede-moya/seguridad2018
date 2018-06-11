@@ -37,6 +37,7 @@ public class SignUpFormController {
         this.view.getEmailErrorLabel().setText("");
         this.view.getPasswordErrorLabel().setText("");
         this.view.getPasswordConfirmationErrorLabel().setText("");
+        this.view.getNameErrorLabel().setText("");
     }
     
     public void evaluatePasswordQuality(){
@@ -50,6 +51,10 @@ public class SignUpFormController {
         clearErrorLables();
         evaluatePasswordQuality();
         
+        if ("".equals(this.view.getNameField().getText())){
+            this.view.getNameErrorLabel().setText("Can't be blank");
+            valid = false;
+        }
         
         if ("".equals(this.view.getEmailField().getText())){
             this.view.getEmailErrorLabel().setText("Can't be blank");
@@ -79,7 +84,7 @@ public class SignUpFormController {
     public void onConfirm(){
         if (this.validate()){
             try {
-                signUp("foo",this.view.getEmailField().getText(),this.view.getPasswordField().getText());
+                signUp(this.view.getNameField().getText(),this.view.getEmailField().getText(),this.view.getPasswordField().getText());
                 displayMainMenu();
             } catch (SQLException ex) {
                 this.view.getDbErrorLabel().setText(ex.getMessage());
