@@ -49,8 +49,8 @@ public class DBConnector {
 
     public static void initiateConnection() {
         try {
-            Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/seguridad", "postgres","postgres");
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.01:3306/seguridad", "user","1234");
             sentence = connection.createStatement();
         } catch (ClassNotFoundException | SQLException ex) {
             
