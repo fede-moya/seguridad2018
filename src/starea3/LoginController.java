@@ -43,7 +43,7 @@ public class LoginController {
     public void displayMainMenu(){
         view.dispose();
         MainMenu mm = new MainMenu();
-        mm.setSize(344, 50);
+        //mm.setSize(344, 50);
         mm.setLocationRelativeTo(view);
         mm.show();
     }

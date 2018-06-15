@@ -35,6 +35,13 @@ public class EncryptFileFormController {
         return true;
     }
     
+    public void goToMenu() {
+        MainMenu mm = new MainMenu();
+        mm.setLocationRelativeTo(view);
+        mm.setVisible(true);
+        this.view.dispose();
+    }
+    
     public void encryptFile(){
         if(validate()){
             try {

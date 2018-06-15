@@ -6,6 +6,7 @@
 package starea3;
 
 import java.io.File;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -44,6 +45,7 @@ public class DecryptFileForm extends javax.swing.JFrame {
         keyField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         decryptButton = new javax.swing.JToggleButton();
+        closeButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Decrypt File");
@@ -73,10 +75,21 @@ public class DecryptFileForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(70, 70, 70))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,13 +103,10 @@ public class DecryptFileForm extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(187, 187, 187)
-                                .addComponent(decryptButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(decryptButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(closeButton))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(70, 70, 70))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +123,9 @@ public class DecryptFileForm extends javax.swing.JFrame {
                 .addComponent(keyField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(decryptButton)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(closeButton)
+                .addGap(10, 10, 10))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -157,6 +169,10 @@ public class DecryptFileForm extends javax.swing.JFrame {
         attachFileField.setText(filename);
     }//GEN-LAST:event_attachFileButtonActionPerformed
 
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        controller.goToMenu();
+    }//GEN-LAST:event_closeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -199,7 +215,15 @@ public class DecryptFileForm extends javax.swing.JFrame {
     public void setAttachFileButton(JToggleButton attachFileButton) {
         this.attachFileButton = attachFileButton;
     }
+    
+    public JToggleButton getCloseButton() {
+        return closeButton;
+    }
 
+    public void setCloseButton(JToggleButton closeButton) {
+        this.closeButton = closeButton;
+    }
+    
     public JTextField getAttachFileField() {
         return attachFileField;
     }
@@ -251,6 +275,7 @@ public class DecryptFileForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton attachFileButton;
     private javax.swing.JTextField attachFileField;
+    private javax.swing.JToggleButton closeButton;
     private javax.swing.JToggleButton decryptButton;
     private javax.swing.JLabel generalErrorLabel;
     private javax.swing.JLabel jLabel1;

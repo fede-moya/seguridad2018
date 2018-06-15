@@ -32,6 +32,12 @@ public class DecryptFileFormController {
         return true;
     }
     
+    public void goToMenu() {
+        MainMenu mm = new MainMenu();        
+        mm.setLocationRelativeTo(view);
+        mm.setVisible(true);
+        this.view.dispose();
+    }
     
     public void decryptFile(){
         if(validate()){
