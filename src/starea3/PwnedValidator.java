@@ -29,18 +29,18 @@ public class PwnedValidator {
         int response = HTTPClient.executeGet(prefix, suffix);
         
         if (response == -1) {
-            evaluation = "Esa contraseña no existía crack!";
+            evaluation = "Excelente";
         } else {
-            if ((response >= 1) && (response <= 50)) {
-                evaluation = "Pero sos el puto amo de las contraseñas";
+            if ((response >= 1) && (response <= 100)) {
+                evaluation = "Buena";
             } else {
-                if ((response > 50) && (response <= 300)) {
-                    evaluation = "Ya hay unos cuantos pajeros que usan esa contraseña";
+                if ((response > 100) && (response <= 1000)) {
+                    evaluation = "Regular";
                 } else {
-                    if ((response > 300) && (response <= 500)) {
-                        evaluation = "Tu contraseña es mas o menos lo mismo que poner 'fefito10'";
+                    if ((response > 1000) && (response <= 10000)) {
+                        evaluation = "Mala";
                     } else {
-                        evaluation = "Sos una verga para elegir contraseñas";
+                        evaluation = "Muy mala";
                     } 
                 } 
             }
