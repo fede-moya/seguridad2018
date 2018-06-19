@@ -5,20 +5,22 @@
  */
 package starea3;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
  * @author federico
  */
 public class SignUpFormController {
-    private SignUpForm view;
+    private final SignUpForm view;
 
     public SignUpFormController(SignUpForm view) {
         this.view = view;
+    }
+    
+    public SignUpForm getView(){
+        return view;
     }
     
     public void signUpSQL(String name, String email, String password) throws SQLException{
@@ -29,54 +31,62 @@ public class SignUpFormController {
     
     public void signUp(String name, String email, String password) throws SQLException{
         String encryptedPassword = Encrypt.digestSHA1(password);
-        signUpSQL("foo",email,encryptedPassword);
+        signUpSQL(name, email, encryptedPassword);
     }
     
     public void clearErrorLables(){
-        this.view.getDbErrorLabel().setText("");
-        this.view.getEmailErrorLabel().setText("");
-        this.view.getPasswordErrorLabel().setText("");
-        this.view.getPasswordConfirmationErrorLabel().setText("");
-        this.view.getNameErrorLabel().setText("");
+        getView().getDbErrorLabel().setText("");
+        getView().getEmailErrorLabel().setText("");
+        getView().getPasswordErrorLabel().setText("");
+        getView().getPasswordConfirmationErrorLabel().setText("");
+        getView().getNameErrorLabel().setText("");
     }
     
-    public void evaluatePasswordQuality(){
-        String digestedPassword = Encrypt.digestSHA1(this.view.getPasswordField().getText());
+    public String evaluatePasswordQuality(){
+        String digestedPassword = Encrypt.digestSHA1(getView().getPasswordField().getText());
         String passwordQualityMessage = PwnedValidator.evaluatePassword(digestedPassword);
-        this.view.getPasswordErrorLabel().setText(passwordQualityMessage);
+        return passwordQualityMessage;
     }
     
     public boolean validate(){
         boolean valid = true;
         clearErrorLables();
-        evaluatePasswordQuality();
         
-        if ("".equals(this.view.getNameField().getText())){
-            this.view.getNameErrorLabel().setText("Can't be blank");
+        if ("".equals(getView().getNameField().getText())){
+            getView().getNameErrorLabel().setText("Can't be blank");
             valid = false;
         }
         
-        if ("".equals(this.view.getEmailField().getText())){
-            this.view.getEmailErrorLabel().setText("Can't be blank");
+        if ("".equals(getView().getEmailField().getText())){
+            getView().getEmailErrorLabel().setText("Can't be blank");
             valid = false;
         }
         
-        if ("".equals(this.view.getPasswordField().getText())){
-            this.view.getPasswordErrorLabel().setText("Can't be blank");
+        if ("".equals(getView().getPasswordField().getText())){
+            getView().getPasswordErrorLabel().setText("Can't be blank");
             valid = false;
         }
         
-        if ("".equals(this.view.getPasswordConfirmationField().getText())){
-            this.view.getPasswordConfirmationErrorLabel().setText("Can't be blank");
+        if ("".equals(getView().getPasswordConfirmationField().getText())){
+            getView().getPasswordConfirmationErrorLabel().setText("Can't be blank");
             valid = false;
         }
+        
+        if (!(getView().getPasswordField().getText().equals(getView().getPasswordConfirmationField().getText()))){
+            getView().getPasswordErrorLabel().setText("Passwords don't match");
+            valid = false;
+        }
+        
         return valid;
+    }
+    
+    public void onEvaluatePassword(){
+        getView().getDbErrorLabel().setText(evaluatePasswordQuality());
     }
     
     public void displayMainMenu(){
         view.dispose();
         MainMenu mm = new MainMenu();
-        mm.setBounds(400,100,500,500);
         mm.setLocationRelativeTo(view);
         mm.show();
     }

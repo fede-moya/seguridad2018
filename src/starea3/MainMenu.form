@@ -77,6 +77,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="decryptButton" alignment="1" max="32767" attributes="0"/>
                               <Component id="encryptFileButton" max="32767" attributes="0"/>
+                              <Component id="signFileButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="verifySignatureButton" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -95,7 +97,11 @@
                   <Component id="encryptFileButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="decryptButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="106" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="signFileButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="verifySignatureButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -142,6 +148,22 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="signFileButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sign File"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signFileButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="verifySignatureButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Verify Signature"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verifySignatureButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

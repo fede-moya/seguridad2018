@@ -55,23 +55,25 @@
                   <Component id="passwordField" min="-2" pref="307" max="-2" attributes="0"/>
                   <Component id="emailField" alignment="0" min="-2" pref="307" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="passwordConfirmationErrorLabel" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="passwordConfirmationField" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="confirmButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="passwordErrorLabel" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
-                                  <Component id="dbErrorLabel" alignment="0" pref="234" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="evaluateButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="passwordErrorLabel" min="-2" pref="225" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="passwordConfirmationErrorLabel" pref="207" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="passwordConfirmationField" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="dbErrorLabel" alignment="0" min="-2" pref="323" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="emailErrorLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -124,7 +126,10 @@
                       <Component id="passwordConfirmationField" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="confirmButton" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="confirmButton" alignment="3" max="32767" attributes="0"/>
+                              <Component id="evaluateButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" attributes="0">
                               <Component id="passwordErrorLabel" min="-2" pref="23" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -226,6 +231,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Fill the requested inputs"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="evaluateButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Evaluate Password "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="evaluateButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
