@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.swing.JOptionPane;
 
 
 public class DecryptFileFormController {
@@ -14,27 +15,51 @@ public class DecryptFileFormController {
         this.view = view;
     }
     
-     public void clearErrorLabels(){
-        view.getGeneralErrorLabel().setText("");
-        view.getKeyFieldErrorLabel().setText("");
+    public DecryptFileForm getView(){
+        return view;
+    }
+    
+    public void clearInputFields(){
+        getView().getAttachFileField().setText("");
+        getView().getKeyField().setText("");
+    }
+    public void clearErrorLabels(){
+        getView().getGeneralErrorLabel().setText("");
+        getView().getKeyFieldErrorLabel().setText("");
     }
     
     public boolean validate(){
         clearErrorLabels();
+        
+        if("".equals(getView().getKeyField().getText())){
+            getView().getKeyFieldErrorLabel().setText("Can't be blank");
+            return false;
+        }
+        
+        if("".equals(getView().getAttachFileField().getText())){
+            getView().getGeneralErrorLabel().setText("No file to do the decoding ");
+            return false;
+        }
+        
         return true;
     }
     
-    public void decryptFile(){
-        if(validate()){
-            
-            try {
-                Encrypt.decryptFile(view.getKeyField().getText(), view.getAttachFileField().getText());
-            } catch (NoSuchAlgorithmException | NoSuchPaddingException | IOException | IllegalBlockSizeException | BadPaddingException ex) {
-                view.getGeneralErrorLabel().setText(ex.getMessage());
-            } catch (java.security.InvalidKeyException ex) {
-                view.getKeyFieldErrorLabel().setText(ex.getMessage());
-            }
+    public void onDecrypt(){
+        if(validate())
+        {
+            decryptFile();
         }
+    }
+    
+    public void decryptFile(){
+        try {
+            Encrypt.decryptFile(getView().getKeyField().getText(), getView().getAttachFileField().getText());
+            clearInputFields();
+            JOptionPane.showMessageDialog(null, "Successful decoding!",null, JOptionPane.INFORMATION_MESSAGE);
+        } catch (java.security.InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException | IOException | IllegalBlockSizeException | BadPaddingException ex ) {
+            getView().getGeneralErrorLabel().setText(ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Unsuccessful decoding!",null, JOptionPane.INFORMATION_MESSAGE);
+        } 
     }
     
 }

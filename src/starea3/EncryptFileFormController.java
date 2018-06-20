@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.swing.JOptionPane;
 
 
 public class EncryptFileFormController {
@@ -14,24 +15,46 @@ public class EncryptFileFormController {
         this.view = view;
     }
     
+    public EncryptFileForm getView(){
+        return view;
+    }
+    
+    public void clearInputFields(){
+        getView().getAttachFileField().setText("");
+        getView().getKeyField().setText("");
+    }
+    
     public void clearErrorLabels(){
-        view.getGeneralErrorLabel().setText("");
-        view.getKeyFieldErrorLabel().setText("");
+        getView().getGeneralErrorLabel().setText("");
+        getView().getKeyFieldErrorLabel().setText("");
     }
     
     public boolean validate(){
         clearErrorLabels();
+        
+        if("".equals(getView().getAttachFileField().getText())){
+            getView().getGeneralErrorLabel().setText("No file to do the encoding");
+            return false;
+        }
+        
+        if("".equals(getView().getKeyField().getText())){
+            getView().getKeyFieldErrorLabel().setText("Can't be blank");
+            return false;
+        }
+        
         return true;
     }
     
     public void encryptFile(){
         if(validate()){
             try {
-                Encrypt.encryptFile(view.getKeyField().getText(), view.getAttachFileField().getText());
+                Encrypt.encryptFile(getView().getKeyField().getText(), getView().getAttachFileField().getText());
+                JOptionPane.showMessageDialog(null, "Successful encoding!",null, JOptionPane.INFORMATION_MESSAGE);
+                clearInputFields();
             } catch (NoSuchAlgorithmException | NoSuchPaddingException | IOException | IllegalBlockSizeException | BadPaddingException ex) {
-                view.getGeneralErrorLabel().setText(ex.getMessage());
+                getView().getGeneralErrorLabel().setText(ex.getMessage());
             } catch (java.security.InvalidKeyException ex) {
-                view.getKeyFieldErrorLabel().setText(ex.getMessage());
+                getView().getKeyFieldErrorLabel().setText(ex.getMessage());
             }
         }
     }
