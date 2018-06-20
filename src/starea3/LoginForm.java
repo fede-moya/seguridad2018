@@ -1,33 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package starea3;
 
-import java.awt.Image;
-import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author federico
- */
 public class LoginForm extends javax.swing.JDialog {
     public final LoginController controller;
     
-    /**
-     * Creates new form Login
-     * @param parent
-     * @param modal
-     */
     public LoginForm(java.awt.Frame parent, boolean modal) {
         super(parent,modal);
         initComponents();
@@ -37,6 +18,10 @@ public class LoginForm extends javax.swing.JDialog {
         setAlwaysOnTop(false);
         controller = new LoginController(this);
         
+    }
+    
+    public LoginController getController(){
+        return controller;
     }
 
     /**
@@ -172,14 +157,13 @@ public class LoginForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        controller.displaySignUpForm();
+        getController().displaySignUpForm();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            if(controller.logIn(this.jTextField1.getText(), this.jPasswordField1.getText())){
-                controller.displayMainMenu();
+            if(getController().logIn(this.jTextField1.getText(), this.jPasswordField1.getText())){
+                MainMenu.displayMainMenu(this);
             }
         } catch (SQLException ex) {
             System.out.println("Sorry, something went wrong trying to access the DB");
@@ -190,47 +174,6 @@ public class LoginForm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(() -> {
-//            LoginForm dialog = new LoginForm(new javax.swing.JFrame(),true);
-//            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//               @Override
-//               public void windowClosing(java.awt.event.WindowEvent e) {
-//                   System.exit(0);
-//               }
-//            });
-//            dialog.setVisible(true);
-//          
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -249,65 +192,32 @@ public class LoginForm extends javax.swing.JDialog {
         return jButton1;
     }
 
-    public void setjButton1(JButton jButton1) {
-        this.jButton1 = jButton1;
-    }
-
     public JButton getjButton2() {
         return jButton2;
-    }
-
-    public void setjButton2(JButton jButton2) {
-        this.jButton2 = jButton2;
     }
 
     public JLabel getjLabel1() {
         return jLabel1;
     }
 
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
-
     public JLabel getjLabel2() {
         return jLabel2;
-    }
-
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
     }
 
     public JLabel getjLabel3() {
         return jLabel3;
     }
 
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
-
     public JLabel getjLabel4() {
         return jLabel4;
-    }
-
-    public void setjLabel4(JLabel jLabel4) {
-        this.jLabel4 = jLabel4;
     }
 
     public JPasswordField getjPasswordField1() {
         return jPasswordField1;
     }
 
-    public void setjPasswordField1(JPasswordField jPasswordField1) {
-        this.jPasswordField1 = jPasswordField1;
-    }
-
     public JTextField getjTextField1() {
         return jTextField1;
     }
-
-    public void setjTextField1(JTextField jTextField1) {
-        this.jTextField1 = jTextField1;
-    }
-
     
 }

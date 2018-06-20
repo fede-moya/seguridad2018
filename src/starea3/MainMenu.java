@@ -1,19 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package starea3;
 
-/**
- *
- * @author federico
- */
 public class MainMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainMenu
-     */
+    private static MainMenu mm;
+    
+    public static MainMenu displayMainMenu(javax.swing.JFrame relatedView){
+        if(mm ==null){
+            mm = new MainMenu();
+        }
+        mm.setLocationRelativeTo(relatedView);
+        relatedView.dispose();
+        mm.show();
+        return mm;
+    }
+    
+    public static MainMenu displayMainMenu(javax.swing.JDialog relatedView){
+        if(mm ==null){
+            mm = new MainMenu();
+        }
+        mm.setLocationRelativeTo(relatedView);
+        relatedView.dispose();
+        mm.show();
+        return mm;
+    }
+    
+    
+    
     public MainMenu() {
         initComponents();
         jPanel1.setVisible(true);
@@ -33,11 +45,12 @@ public class MainMenu extends javax.swing.JFrame {
         encryptFileButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         decryptButton = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
+        logOutButton = new javax.swing.JButton();
         signFileButton = new javax.swing.JButton();
         verifySignatureButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -61,11 +74,11 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Sign off");
-        jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        logOutButton.setText("Log out");
+        logOutButton.setToolTipText("");
+        logOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                logOutButtonActionPerformed(evt);
             }
         });
 
@@ -91,7 +104,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(logOutButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -125,8 +138,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(signFileButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(verifySignatureButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addComponent(logOutButton)
                 .addContainerGap())
         );
 
@@ -150,10 +163,10 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            // TODO add your handling code here:
-            System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
+        dispose();
+        new LoginForm(null, true).show();
+    }//GEN-LAST:event_logOutButtonActionPerformed
 
     private void encryptFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encryptFileButtonActionPerformed
         this.dispose();
@@ -183,48 +196,14 @@ public class MainMenu extends javax.swing.JFrame {
         vs.show();
     }//GEN-LAST:event_verifySignatureButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new MainMenu().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton decryptButton;
     private javax.swing.JButton encryptFileButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton logOutButton;
     private javax.swing.JButton signFileButton;
     private javax.swing.JButton verifySignatureButton;
     // End of variables declaration//GEN-END:variables

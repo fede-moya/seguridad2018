@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package starea3;
 
 import java.io.BufferedInputStream;
@@ -19,13 +14,7 @@ import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.Signature;
 import java.security.SignatureException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author federico
- */
 public class SignFileFormController {
     private final SignFileForm view;
 

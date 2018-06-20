@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package starea3;
 
 import java.sql.SQLException;
 
-
-/**
- *
- * @author federico
- */
 public class SignUpFormController {
     private final SignUpForm view;
 
@@ -81,23 +71,18 @@ public class SignUpFormController {
     }
     
     public void onEvaluatePassword(){
-        getView().getDbErrorLabel().setText(evaluatePasswordQuality());
-    }
-    
-    public void displayMainMenu(){
-        view.dispose();
-        MainMenu mm = new MainMenu();
-        mm.setLocationRelativeTo(view);
-        mm.show();
+        if (validate()){
+            getView().getDbErrorLabel().setText(evaluatePasswordQuality());
+        }
     }
     
     public void onConfirm(){
-        if (this.validate()){
+        if (validate()){
             try {
-                signUp(this.view.getNameField().getText(),this.view.getEmailField().getText(),this.view.getPasswordField().getText());
-                displayMainMenu();
+                signUp(getView().getNameField().getText(), getView().getEmailField().getText(), getView().getPasswordField().getText());
+                MainMenu.displayMainMenu(getView());
             } catch (SQLException ex) {
-                this.view.getDbErrorLabel().setText(ex.getMessage());
+                getView().getDbErrorLabel().setText(ex.getMessage());
             }
         }
     }

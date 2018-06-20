@@ -1,30 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package starea3;
 
 import java.io.File;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
-/**
- *
- * @author federico
- */
+
 public class DecryptFileForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DecryptFileForm
-     */
-    public final DecryptFileFormController controller;
+    
+    private final DecryptFileFormController controller;
+    
     public DecryptFileForm() {
         initComponents();
         controller = new DecryptFileFormController(this);
+    }
+    
+    public DecryptFileFormController getController(){
+        return controller;
     }
 
     /**
@@ -49,6 +43,7 @@ public class DecryptFileForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Decrypt File");
+        setResizable(false);
 
         keyErrorLabel.setForeground(new java.awt.Color(255, 0, 51));
 
@@ -75,7 +70,7 @@ public class DecryptFileForm extends javax.swing.JFrame {
             }
         });
 
-        closeButton.setText("Close");
+        closeButton.setText("Go back");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeButtonActionPerformed(evt);
@@ -158,7 +153,7 @@ public class DecryptFileForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void decryptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decryptButtonActionPerformed
-        controller.decryptFile();
+        getController().decryptFile();
     }//GEN-LAST:event_decryptButtonActionPerformed
 
     private void attachFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attachFileButtonActionPerformed
@@ -166,111 +161,45 @@ public class DecryptFileForm extends javax.swing.JFrame {
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         String filename = f.getAbsolutePath();
-        attachFileField.setText(filename);
+        getAttachFileField().setText(filename);
     }//GEN-LAST:event_attachFileButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        controller.goToMenu();
+        MainMenu.displayMainMenu(this);
     }//GEN-LAST:event_closeButtonActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(DecryptFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(DecryptFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(DecryptFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(DecryptFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new DecryptFileForm().setVisible(true);
-//            }
-//        });
-//    }
 
     public JToggleButton getAttachFileButton() {
         return attachFileButton;
     }
 
-    public void setAttachFileButton(JToggleButton attachFileButton) {
-        this.attachFileButton = attachFileButton;
-    }
-    
     public JToggleButton getCloseButton() {
         return closeButton;
     }
 
-    public void setCloseButton(JToggleButton closeButton) {
-        this.closeButton = closeButton;
-    }
-    
     public JTextField getAttachFileField() {
         return attachFileField;
-    }
-
-    public void setAttachFileField(JTextField attachFileField) {
-        this.attachFileField = attachFileField;
     }
 
     public JToggleButton getDecryptButton() {
         return decryptButton;
     }
 
-    public void setDecryptButton(JToggleButton decryptButton) {
-        this.decryptButton = decryptButton;
-    }
-
     public JLabel getjLabel1() {
         return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
     }
 
     public JTextField getKeyField() {
         return keyField;
     }
 
-    public void setKeyField(JTextField keyField) {
-        this.keyField = keyField;
-    }
-
     public JLabel getGeneralErrorLabel() {
         return generalErrorLabel;
-    }
-
-    public void setGeneralErrorLabel(JLabel generalErrorLabel) {
-        this.generalErrorLabel = generalErrorLabel;
     }
 
     public JLabel getKeyFieldErrorLabel() {
         return keyErrorLabel;
     }
 
-    public void setKeyFieldErrorLabel(JLabel keyErrorLabel) {
-        this.keyErrorLabel = keyErrorLabel;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton attachFileButton;

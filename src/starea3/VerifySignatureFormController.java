@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package starea3;
 
 import java.io.BufferedInputStream;
@@ -20,10 +15,6 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 
 
-/**
- *
- * @author federico
- */
 public class VerifySignatureFormController {
     private final VerifySignatureForm view;
 

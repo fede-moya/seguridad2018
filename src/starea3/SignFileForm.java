@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package starea3;
 
 import java.io.File;
@@ -12,10 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-/**
- *
- * @author federico
- */
 public class SignFileForm extends javax.swing.JFrame {
 
     private SignFileFormController controller;
@@ -41,8 +32,10 @@ public class SignFileForm extends javax.swing.JFrame {
         attachFileButton = new javax.swing.JButton();
         signButton = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
+        goBackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         mainPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -66,25 +59,37 @@ public class SignFileForm extends javax.swing.JFrame {
         errorLabel.setForeground(new java.awt.Color(255, 0, 51));
         errorLabel.setText("jLabel1");
 
+        goBackButton.setText("Go Back");
+        goBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(attachFileText, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(titleLabel)
-                                .addGap(9, 9, 9))
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(signButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(attachFileButton))
-                    .addComponent(errorLabel))
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(attachFileText, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(mainPanelLayout.createSequentialGroup()
+                                        .addComponent(titleLabel)
+                                        .addGap(9, 9, 9)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(attachFileButton))
+                            .addComponent(errorLabel)))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(signButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(goBackButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
@@ -98,8 +103,10 @@ public class SignFileForm extends javax.swing.JFrame {
                     .addComponent(attachFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
                 .addComponent(signButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(goBackButton)
                 .addContainerGap())
         );
 
@@ -135,101 +142,44 @@ public class SignFileForm extends javax.swing.JFrame {
         getAttachFileText().setText(filename);
     }//GEN-LAST:event_attachFileButtonActionPerformed
 
+    private void goBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackButtonActionPerformed
+        MainMenu.displayMainMenu(this);
+    }//GEN-LAST:event_goBackButtonActionPerformed
+
     
     public SignFileFormController getController() {
         return controller;
-    }
-
-    public void setController(SignFileFormController controller) {
-        this.controller = controller;
     }
 
     public JButton getAttachFileButton() {
         return attachFileButton;
     }
 
-    public void setAttachFileButton(JButton attachFileButton) {
-        this.attachFileButton = attachFileButton;
-    }
-
     public JTextField getAttachFileText() {
         return attachFileText;
-    }
-
-    public void setAttachFileText(JTextField attachFileText) {
-        this.attachFileText = attachFileText;
     }
 
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
-    public void setMainPanel(JPanel mainPanel) {
-        this.mainPanel = mainPanel;
-    }
-
     public JButton getSignButton() {
         return signButton;
-    }
-
-    public void setSignButton(JButton signButton) {
-        this.signButton = signButton;
     }
 
     public JLabel getTitleLabel() {
         return titleLabel;
     }
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(SignFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(SignFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(SignFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(SignFileForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new SignFileForm().setVisible(true);
-//            }
-//        });
-//    }
-    public void setTitleLabel(JLabel titleLabel) {
-        this.titleLabel = titleLabel;
-    }    
-
     public JLabel getErrorLabel() {
         return errorLabel;
-    }
-
-    public void setErrorLabel(JLabel errorLabel) {
-        this.errorLabel = errorLabel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton attachFileButton;
     private javax.swing.JTextField attachFileText;
     private javax.swing.JLabel errorLabel;
+    private javax.swing.JButton goBackButton;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JButton signButton;
     private javax.swing.JLabel titleLabel;
