@@ -40,6 +40,7 @@ public class SignUpFormController {
     
     public boolean validate(){
         boolean valid = true;
+        String password = getView().getPasswordField().getText();
         clearErrorLables();
         
         if ("".equals(getView().getNameField().getText())){
@@ -52,7 +53,7 @@ public class SignUpFormController {
             valid = false;
         }
         
-        if ("".equals(getView().getPasswordField().getText())){
+        if ("".equals(password)){
             getView().getPasswordErrorLabel().setText("Can't be blank");
             valid = false;
         }
@@ -62,9 +63,33 @@ public class SignUpFormController {
             valid = false;
         }
         
+        
+        
+        if (password.length()<8){
+            valid =  false; 
+            getView().getPasswordErrorLabel().setText("At least eight characters");
+        } else {      
+            char c;  
+            int count = 1;   
+            for (int i = 0; i < password.length() - 1; i++) {  
+                c = password.charAt(i);  
+                if (!Character.isLetterOrDigit(c)) {          
+                    valid =  false; 
+                    getView().getPasswordErrorLabel().setText("Must consist of only letters and digits");
+                } else if (Character.isDigit(c)) {  
+                    count++;  
+                }  
+            }
+            if (count < 2) {     
+                valid =  false; 
+                getView().getPasswordErrorLabel().setText("Must conaint at least two digits");
+            }     
+        }  
+            
+        
         if (!(getView().getPasswordField().getText().equals(getView().getPasswordConfirmationField().getText()))){
-            getView().getPasswordErrorLabel().setText("Passwords don't match");
-            valid = false;
+                getView().getPasswordErrorLabel().setText("Passwords don't match");
+                valid = false;
         }
         
         return valid;
